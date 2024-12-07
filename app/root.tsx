@@ -1,39 +1,40 @@
-import { cssBundleHref } from '@remix-run/css-bundle';
-import type { LinksFunction, LoaderFunctionArgs } from '@remix-run/node';
+import { cssBundleHref } from "@remix-run/css-bundle";
+import type { LinksFunction, LoaderFunctionArgs } from "@remix-run/node";
 import {
 	Links,
 	Meta,
 	Outlet,
 	Scripts,
 	ScrollRestoration,
+	json,
 	useLoaderData,
-} from '@remix-run/react';
-import { TooltipProvider } from '~ui/tooltip';
-import i18next, { i18nCookie } from '~modules/i18n/i18next.server';
-import { useTranslation } from 'react-i18next';
-import { useChangeLanguage } from 'remix-i18next/react';
-import { combineHeaders } from './utils/misc.server';
-import { ThemeProvider } from '~components/shared/theme-provider.component';
+} from "@remix-run/react";
+import { useTranslation } from "react-i18next";
+import { useChangeLanguage } from "remix-i18next/react";
+import { ThemeProvider } from "~components/shared/theme-provider.component";
+import i18next, { i18nCookie } from "~modules/i18n/i18next.server";
+import { TooltipProvider } from "~ui/tooltip";
+import { combineHeaders } from "./utils/misc.server";
 
-import TailwindCss from '~/styles/tailwind.scss?url';
-import FontsCss from '~/styles/fonts.scss?url';
+import FontsCss from "~/styles/fonts.scss?url";
+import TailwindCss from "~/styles/tailwind.scss?url";
 
 export const links: LinksFunction = () => {
 	return [
-		{ rel: 'stylesheet', href: TailwindCss },
-		{ rel: 'stylesheet', href: FontsCss },
-		...(cssBundleHref ? [{ rel: 'stylesheet', href: cssBundleHref }] : []),
+		{ rel: "stylesheet", href: TailwindCss },
+		{ rel: "stylesheet", href: FontsCss },
+		...(cssBundleHref ? [{ rel: "stylesheet", href: cssBundleHref }] : []),
 	];
 };
 
 export async function loader({ request }: LoaderFunctionArgs) {
 	const locale = await i18next.getLocale(request);
 
-	return Response.json(
+	return json(
 		{ locale },
 		{
 			headers: combineHeaders({
-				'Set-Cookie': await i18nCookie.serialize(locale),
+				"Set-Cookie": await i18nCookie.serialize(locale),
 			}),
 		},
 	);
@@ -44,7 +45,7 @@ export const handle = {
 	// will need to load. This key can be a single string or an array of strings.
 	// TIP: In most cases, you should set this to your defaultNS from your i18n config
 	// or if you did not set one, set it to the i18next default namespace "translation"
-	i18n: 'common',
+	i18n: "common",
 };
 
 export function Layout({ children }: { children: React.ReactNode }) {

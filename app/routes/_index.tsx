@@ -1,13 +1,13 @@
-import type { MetaFunction } from '@remix-run/node';
-import { useTranslation } from 'react-i18next';
-import BrandLogo from '~components/shared/brand-logo.component';
-import LanguageSwitcher from '~components/shared/language-switcher.component';
-import ThemeToggle from '~components/shared/theme-toggle.component';
+import type { MetaFunction } from "@remix-run/node";
+import { useTranslation } from "react-i18next";
+import BrandLogo from "~components/shared/brand-logo.component";
+import LanguageSwitcher from "~components/shared/language-switcher.component";
+import ThemeToggle from "~components/shared/theme-toggle.component";
 
 export const meta: MetaFunction = () => {
 	return [
-		{ title: 'Remix Bun' },
-		{ name: 'description', content: 'The Fullstack Feast for Speed and Style' },
+		{ title: "Remix Bun" },
+		{ name: "description", content: "The Fullstack Feast for Speed and Style" },
 	];
 };
 
@@ -35,13 +35,13 @@ export default function Index() {
 
 			<div className="space-y-2 text-center">
 				<h1 className="font-bold font-mono text-4xl text-gray-900 tracking-tight dark:text-white">
-					Remix Bun – {t('title')}
+					Remix Bun – {t("title")}
 				</h1>
 				<p className="text-gray-600 text-lg dark:text-gray-300">
-					{t('description')}
+					{t("description")}
 				</p>
 				<p className="text-gray-600 text-lg dark:text-gray-300">
-					{t('description.2')}
+					{t("description.2")}
 				</p>
 			</div>
 
@@ -72,7 +72,7 @@ export default function Index() {
 
 			{/* Footer */}
 			<footer className="mt-10 text-gray-600 text-sm dark:text-gray-400">
-				© {new Date().getFullYear()}{' '}
+				© {new Date().getFullYear()}{" "}
 				<a
 					href="https://github.com/akbarsaputrait"
 					target="_blank"

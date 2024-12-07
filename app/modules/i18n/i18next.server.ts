@@ -1,10 +1,10 @@
+import { resolve } from "node:path";
+import { createCookie } from "@remix-run/node";
 // @NOTE: Required to use CJS
 // Reference: https://github.com/i18next/i18next-fs-backend/issues/59
 import Backend from "i18next-fs-backend/cjs";
-import { resolve } from "node:path";
 import { RemixI18Next } from "remix-i18next/server";
 import i18n from "./i18n";
-import { createCookie } from "@remix-run/node";
 
 export const cookieLocaleName = "remix-locale";
 
