@@ -1,35 +1,45 @@
 import type { MetaFunction } from "@remix-run/node";
+import { useTranslation } from "react-i18next";
 import BrandLogo from "~components/shared/brand-logo.component";
+import LanguageSwitcher from "~components/shared/language-switcher.component";
 
 export const meta: MetaFunction = () => {
   return [
-    { title: "New Remix App" },
-    { name: "description", content: "Welcome to Remix!" },
+    { title: "Remix Bun" },
+    { name: "description", content: "The Fullstack Feast for Speed and Style" },
   ];
 };
 
 export default function Index() {
+  const { t } = useTranslation();
+
   return (
-    <div className="flex h-[70vh] flex-col items-center justify-center gap-6">
+    <div className="my-12 flex flex-col items-center justify-center gap-6">
       <div className="grid grid-cols-2 place-items-center gap-4 md:grid-cols-4">
         <BrandLogo brand="remix" url="https://remix.run" />
         <BrandLogo brand="shadcn" url="https://ui.shadcn.com" />
         <BrandLogo brand="vite" url="https://vitejs.dev" />
         <BrandLogo brand="bun" url="https://bun.sh" />
+        <BrandLogo
+          brand="i18n"
+          url="https://i18next.com"
+          className="col-span-full justify-center"
+        />
       </div>
+
+      <div className="space-y-2">
+        <LanguageSwitcher />
+      </div>
+
       <div className="space-y-2 text-center">
         <h1 className="font-extrabold text-4xl text-gray-900 tracking-tight dark:text-white">
-          Remix Bun – The Fullstack Feast for Speed and Style
+          Remix Bun – {t("title")}
         </h1>
         <p className="text-gray-600 text-lg dark:text-gray-300">
-          Welcome to{" "}
-          <strong className="text-gray-900 dark:text-white">Remix Bun</strong>,
-          where speed meets style! This tech-powered remix takes your web apps
-          to the next level.
+          {t("description")}
         </p>
         <p className="text-gray-600 text-lg dark:text-gray-300">
-          It’s fast, fun, and freakishly powerful—just like your next big idea.
-          Let’s remix the web together! 🌐✨
+          {t("description.2")}
         </p>
       </div>
 
@@ -60,7 +70,15 @@ export default function Index() {
 
       {/* Footer */}
       <footer className="mt-10 text-gray-600 text-sm dark:text-gray-400">
-        © {new Date().getFullYear()} akbarsaputrait
+        © {new Date().getFullYear()}{" "}
+        <a
+          href="https://github.com/akbarsaputrait"
+          target="_blank"
+          rel="noreferrer"
+          className="font-semibold text-gray-900 hover:underline dark:text-white"
+        >
+          akbarsaputrait
+        </a>
       </footer>
     </div>
   );

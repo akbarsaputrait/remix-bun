@@ -25,6 +25,7 @@
 		"paths": {
 			"~ui/*": ["./app/components/ui/*"],
 			"~components/*": ["./app/components/*"],
+			"~modules/*": ["./app/modules/*"],
 			"~/*": ["./app/*"]
 		},
 

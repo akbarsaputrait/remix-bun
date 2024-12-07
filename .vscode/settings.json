@@ -10,5 +10,8 @@
   },
   "editor.codeActionsOnSave": {
     "quickfix.biome": "explicit"
-  }
+  },
+  "i18n-ally.localesPaths": ["public/locales", "public/locales"],
+	"i18n-ally.sourceLanguage": "english",
+	"i18n-ally.keystyle": "nested"
 }
