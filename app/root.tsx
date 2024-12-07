@@ -18,11 +18,15 @@ import { combineHeaders } from "./utils/misc.server";
 
 import FontsCss from "~/styles/fonts.scss?url";
 import TailwindCss from "~/styles/tailwind.scss?url";
+import { GlobalPendingIndicator } from "~components/shared/global-pending.component";
+import { Toaster } from "sonner";
+import sonnerStyles from "node_modules/sonner/dist/styles.css?url";
 
 export const links: LinksFunction = () => {
 	return [
 		{ rel: "stylesheet", href: TailwindCss },
 		{ rel: "stylesheet", href: FontsCss },
+		{ rel: "stylesheet", href: sonnerStyles },
 		...(cssBundleHref ? [{ rel: "stylesheet", href: cssBundleHref }] : []),
 	];
 };
@@ -74,6 +78,8 @@ export function Layout({ children }: { children: React.ReactNode }) {
 					enableSystem
 					disableTransitionOnChange
 				>
+					<GlobalPendingIndicator />
+					<Toaster />
 					<TooltipProvider>{children}</TooltipProvider>
 					<ScrollRestoration />
 					<Scripts />
