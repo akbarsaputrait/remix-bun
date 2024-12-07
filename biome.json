@@ -21,7 +21,11 @@
 				"noUnusedImports": "error"
 			},
 			"nursery": {
-				"useSortedClasses": "error"
+				"useSortedClasses": {
+					"fix": "safe",
+					"level": "info",
+					"options": {}
+				}
 			},
 			"style": {
 				"noParameterAssign": "off"
@@ -29,9 +33,6 @@
 		}
 	},
 	"files": {
-		"ignore": [
-			"package.json",
-			"build"
-		]
+		"ignore": ["package.json", "build"]
 	}
 }

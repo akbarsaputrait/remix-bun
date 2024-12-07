@@ -1,3 +1,5 @@
+import { cssBundleHref } from "@remix-run/css-bundle";
+import type { LinksFunction } from "@remix-run/node";
 import {
   Links,
   Meta,
@@ -5,9 +7,8 @@ import {
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
-import type { LinksFunction } from "@remix-run/node";
-import { cssBundleHref } from "@remix-run/css-bundle";
-import TailwindCss from "./tailwind.css?url";
+import TailwindCss from "./tailwind.scss?url";
+import { TooltipProvider } from "~ui/tooltip";
 
 export const links: LinksFunction = () => {
   return [
@@ -26,7 +27,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
-        {children}
+        <TooltipProvider>{children}</TooltipProvider>
         <ScrollRestoration />
         <Scripts />
       </body>

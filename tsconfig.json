@@ -23,6 +23,8 @@
 		"forceConsistentCasingInFileNames": true,
 		"baseUrl": ".",
 		"paths": {
+			"~ui/*": ["./app/components/ui/*"],
+			"~components/*": ["./app/components/*"],
 			"~/*": ["./app/*"]
 		},
 
