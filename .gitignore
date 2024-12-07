@@ -1,7 +1,11 @@
 node_modules
-
 /.cache
 /build
+/public/build
 .env
-
-.idea/
+.DS_Store
+/coverage
+/.mocks
+/playwright-report
+/playwright/.cache/
+*.log
