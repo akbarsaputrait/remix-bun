@@ -14,6 +14,7 @@ import i18next, { i18nCookie } from "~modules/i18n/i18next.server";
 import { useTranslation } from "react-i18next";
 import { useChangeLanguage } from "remix-i18next/react";
 import { combineHeaders } from "./utils/misc.server";
+import { ThemeProvider } from "~components/shared/theme-provider.component";
 
 export const links: LinksFunction = () => {
   return [
@@ -55,7 +56,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
   useChangeLanguage(locale);
 
   return (
-    <html lang={locale} dir={i18n.dir()}>
+    <html lang={locale} dir={i18n.dir()} suppressHydrationWarning>
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -63,9 +64,16 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
-        <TooltipProvider>{children}</TooltipProvider>
-        <ScrollRestoration />
-        <Scripts />
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <TooltipProvider>{children}</TooltipProvider>
+          <ScrollRestoration />
+          <Scripts />
+        </ThemeProvider>
       </body>
     </html>
   );

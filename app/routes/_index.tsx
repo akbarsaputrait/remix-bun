@@ -2,6 +2,7 @@ import type { MetaFunction } from "@remix-run/node";
 import { useTranslation } from "react-i18next";
 import BrandLogo from "~components/shared/brand-logo.component";
 import LanguageSwitcher from "~components/shared/language-switcher.component";
+import ThemeToggle from "~components/shared/theme-toggle.component";
 
 export const meta: MetaFunction = () => {
   return [
@@ -27,8 +28,9 @@ export default function Index() {
         />
       </div>
 
-      <div className="space-y-2">
+      <div className="flex items-center gap-4">
         <LanguageSwitcher />
+        <ThemeToggle />
       </div>
 
       <div className="space-y-2 text-center">

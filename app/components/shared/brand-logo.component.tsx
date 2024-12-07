@@ -14,10 +14,14 @@ export default function BrandLogo({ brand, url, ...props }: BrandLogoProps) {
         <a
           href={url}
           target="_blank"
-          className="flex h-20 w-20 items-center justify-center rounded-full bg-gray-100 dark:bg-gray-800"
+          className="flex h-20 w-20 items-center justify-center rounded-full bg-gray-100 dark:bg-gray-50"
           rel="noreferrer"
         >
-          <img src={`/${brand}.svg`} className="size-8" alt="Remix Logo" />
+          <img
+            src={`/${brand}.svg`}
+            className="size-8 fill-red-50"
+            alt="Remix Logo"
+          />
         </a>
       </TooltipTrigger>
       <TooltipContent className="capitalize">{brand}</TooltipContent>
