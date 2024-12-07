@@ -21,6 +21,7 @@ import TailwindCss from "~/styles/tailwind.scss?url";
 import { GlobalPendingIndicator } from "~components/shared/global-pending.component";
 import { Toaster } from "sonner";
 import sonnerStyles from "node_modules/sonner/dist/styles.css?url";
+import { LoaderCircle } from "lucide-react";
 
 export const links: LinksFunction = () => {
 	return [
@@ -52,6 +53,23 @@ export const handle = {
 	i18n: "common",
 };
 
+function LanguageProvider({ children }: { children: React.ReactNode }) {
+	const { ready } = useTranslation();
+
+	// If the translation is not yet ready, we can show a loading indicator
+	if (!ready) {
+		return (
+			<div className="fixed top-0 left-0 z-50 h-full w-full bg-white">
+				<div className="mt-[50vh] flex items-center justify-center">
+					<LoaderCircle className="size-8 animate-spin text-zinc-600 dark:text-zinc-300" />
+				</div>
+			</div>
+		);
+	}
+
+	return children;
+}
+
 export function Layout({ children }: { children: React.ReactNode }) {
 	// Get the locale from the loader
 	const { locale } = useLoaderData<typeof loader>();
@@ -80,7 +98,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
 				>
 					<GlobalPendingIndicator />
 					<Toaster />
-					<TooltipProvider>{children}</TooltipProvider>
+					<TooltipProvider>
+						<LanguageProvider>{children}</LanguageProvider>
+					</TooltipProvider>
 					<ScrollRestoration />
 					<Scripts />
 				</ThemeProvider>
